@@ -1,0 +1,99 @@
+#include<iostream>
+using namespace std;
+class stack{
+private:
+		char *arr;
+		int top;
+		int capacity;
+public:
+	stack()
+	{
+		capacity = 10;
+		arr = new char[capacity];
+		top = -1;
+	}
+	bool isEmpty(){
+		if (top == -1)
+			return true;
+		else
+			return false;
+	}
+	bool isFull(){
+		if ((top++) == capacity)
+			return true;
+		else
+			return false;
+	}
+	bool push(char x){
+		if (!isFull()){
+			arr[++top] = x;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	bool pop(char&x){
+		if (isEmpty()){
+			return false;
+		}
+		else
+		{
+			x = arr[top--];
+			return true;
+		}
+	}
+};
+int main()
+{
+	stack s1;
+	s1.push('(');
+	s1.push(')');
+	for (int i = 0; i < 2; i++)
+	{
+		if ((c[i] == '(') || (c[i] == '{') || (c[i] == '['))
+		{
+			s1.push(c[i]);
+		}
+		else
+		{
+			switch (c[i])
+			{
+			case ')':
+				a = pop();
+				if ((a == '{') || (a == '['))
+				{
+					cout << "invalid expr!!";
+					getch();
+				}
+				break;
+			case '}':
+				y = pop();
+				if ((y == '[') || (y == '('))
+				{
+					cout << "invalid expr!!";
+					getch();
+				}
+				break;
+			case ']':
+				z = pop();
+				if ((z == '{') || (z == '('))
+				{
+					cout << "invalid expr!!";
+					getch();
+				}
+				break;
+			}
+		}
+	}
+	if (top == NULL)
+	{
+		cout << "balanced expr!!";
+	}
+	else
+	{
+		cout << "string is not valid.!!";
+	}
+	getch();
+}
